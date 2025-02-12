@@ -12,47 +12,47 @@ importers:
   .:
     dependencies:
       react:
-        specifier: ^16.8.6
+        specifier: ^16.14.0
         version: 16.14.0
       react-dom:
-        specifier: ^16.8.6
+        specifier: ^16.14.0
         version: 16.14.0(react@16.14.0)
     devDependencies:
       '@babel/core':
-        specifier: ^7.8.7
+        specifier: ^7.26.8
         version: 7.26.8
       '@babel/plugin-proposal-object-rest-spread':
-        specifier: ^7.8.3
+        specifier: ^7.20.7
         version: 7.20.7(@babel/core@7.26.8)
       '@babel/plugin-syntax-class-properties':
-        specifier: ^7.10.4
+        specifier: ^7.12.13
         version: 7.12.13(@babel/core@7.26.8)
       '@babel/plugin-transform-react-jsx':
-        specifier: ^7.8.3
+        specifier: ^7.25.9
         version: 7.25.9(@babel/core@7.26.8)
       babel-loader:
-        specifier: ^8.0.6
+        specifier: ^8.4.1
         version: 8.4.1(@babel/core@7.26.8)(webpack@5.97.1)
       clean-webpack-plugin:
         specifier: ^2.0.2
         version: 2.0.2(webpack@5.97.1)
       copy-webpack-plugin:
-        specifier: ^5.0.3
+        specifier: ^5.1.2
         version: 5.1.2(webpack@5.97.1)
       css-loader:
-        specifier: ^6.8.1
+        specifier: ^6.11.0
         version: 6.11.0(webpack@5.97.1)
       file-loader:
         specifier: ^5.1.0
         version: 5.1.0(webpack@5.97.1)
       nodemon:
-        specifier: ^2.0.7
+        specifier: ^2.0.22
         version: 2.0.22
       style-loader:
-        specifier: ^1.1.3
+        specifier: ^1.3.0
         version: 1.3.0(webpack@5.97.1)
       webpack:
-        specifier: ^5.88.1
+        specifier: ^5.97.1
         version: 5.97.1(webpack-cli@5.1.4)
       webpack-cli:
         specifier: ^5.1.4
