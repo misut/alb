@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 const _id = Symbol("_id");
 const _root = Symbol("_root");
@@ -33,15 +33,15 @@ export class PanelController {
     this[_root].style.height = "100vh";
     this[_root].style.overflow = "auto";
     this[_root].style.padding = "8px";
-
-    ReactDOM.render(this[_Component]({ panel: this }), this[_root]);
-
+    const root = ReactDOM.createRoot(this[_root]);
+    root.render(this[_Component]({ panel: this }));
     return this[_root];
   }
 
   show (event) {
     if (!this[_root]) this.create();
     this[_attachment] = event;
+    console.log(event);
     this[_attachment].appendChild(this[_root]);
   }
 
