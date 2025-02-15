@@ -7,8 +7,9 @@ const _Component = Symbol("_Component");
 const _menuItems = Symbol("_menuItems");
 
 export class PanelController {
+  menuItems: { id: string, label: string, enabled: boolean, checked: boolean, submenu: any[] }[];
 
-  constructor(Component, { id, menuItems } = {}) {
+  constructor(Component: any, { id = "", menuItems = [] }: { id?: string, menuItems?: { id: string, label: string, enabled: boolean, checked: boolean, submenu: any[] }[] } = {}) {
     this[_id] = null;
     this[_root] = null;
     this[_attachment] = null;
@@ -28,7 +29,7 @@ export class PanelController {
     ["create", "show", "hide", "destroy", "invokeMenu"].forEach(fn => this[fn] = this[fn].bind(this));
   }
 
-  create () {
+  create() {
     this[_root] = document.createElement("div");
     this[_root].style.height = "100vh";
     this[_root].style.overflow = "auto";
@@ -38,23 +39,25 @@ export class PanelController {
     return this[_root];
   }
 
-  show (event) {
+  show(event) {
     if (!this[_root]) this.create();
     this[_attachment] = event;
     console.log(event);
     this[_attachment].appendChild(this[_root]);
   }
 
-  hide () {
+  hide() {
     if (this[_attachment] && this[_root]) {
       this[_attachment].removeChild(this[_root]);
       this[_attachment] = null;
     }
   }
 
-  destroy () { }
+  destroy() { }
 
-  invokeMenu (id) {
+  customEntrypoint() { }
+
+  invokeMenu(id: string) {
     const menuItem = this[_menuItems].find(c => c.id === id);
     if (menuItem) {
       const handler = menuItem.oninvoke;

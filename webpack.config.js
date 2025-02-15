@@ -3,7 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
@@ -21,10 +21,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
+          "presets": [
+            "@babel/preset-env",
+            "@babel/preset-typescript"
+          ],
           plugins: [
             "@babel/transform-react-jsx",
             "@babel/plugin-syntax-class-properties",

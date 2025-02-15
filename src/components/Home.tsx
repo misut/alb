@@ -1,6 +1,6 @@
 import React from "react";
 
-import { WC } from "./WC.jsx";
+import { WC } from "./WC.tsx";
 
 import "./Home.css";
 
