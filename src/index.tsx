@@ -1,26 +1,22 @@
 
-import React from "react";
-import { PanelController } from "./controllers/PanelController.tsx";
-import { Demos } from "./panels/Demos.tsx";
+import { Demos } from "./infrastructure/react/components/Demos.tsx";
+import { ReactPanel } from "./infrastructure/react/ReactPanel.tsx";
 
 import { entrypoints } from "uxp";
 
-const demosController = new PanelController(() => <Demos />, {
-  id: "demos"
-});
-
+const reactPanel = new ReactPanel(Demos);
 
 entrypoints.setup({
   plugin: {
     create(plugin) {
-            /* optional */ console.log("created", plugin);
+      console.log("created", plugin);
     },
     destroy() {
-            /* optional */ console.log("destroyed");
+      console.log("destroyed");
     }
   },
   panels: {
-    demos: demosController
+    demos: reactPanel
   },
   commands: {}
 });

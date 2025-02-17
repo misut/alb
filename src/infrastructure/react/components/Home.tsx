@@ -2,13 +2,14 @@ import React from "react";
 
 import { WC } from "./WC.tsx";
 
+import { ReactComponent } from "../ReactComponent.tsx";
 import "./Home.css";
 
-export const Home = () => {
+export const Home: ReactComponent = () => {
   const duplicateMasterSpread = () => {
     const app = require("indesign").app;
     const doc = app.activeDocument;
-    const masterSpread = doc.masterSpreads.itemByName("H-내지B");
+    const masterSpread = doc.masterSpreads.itemByName("I-내지C");
     const leftPage = doc.pages.add();
     leftPage.appliedMaster = masterSpread;
     const rightPage = doc.pages.add();
