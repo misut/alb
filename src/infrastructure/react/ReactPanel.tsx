@@ -6,10 +6,10 @@ import { ReactComponent } from "./ReactComponent";
 export class ReactPanel implements Panel {
   menuItems: MenuItem[] = [];
 
-  #attachment?: HTMLElement = null;
+  #attachment?: HTMLElement = undefined;
   #reactComponent: ReactComponent;
-  #reactRoot?: ReactDOM.Root = null;
-  #root?: HTMLElement = null;
+  #reactRoot?: ReactDOM.Root = undefined;
+  #root?: HTMLElement = undefined;
 
   constructor(reactComponent: ReactComponent, menuItems: MenuItem[] = []) {
     this.#reactComponent = reactComponent;
@@ -32,7 +32,7 @@ export class ReactPanel implements Panel {
 
   show = (event: HTMLElement) => {
     if (!this.#root) {
-      this.create();
+      this.#root = this.create();
     }
     this.#attachment = event;
     this.#attachment.appendChild(this.#root);
@@ -41,17 +41,19 @@ export class ReactPanel implements Panel {
   hide = () => {
     if (this.#attachment && this.#root) {
       this.#attachment.removeChild(this.#root);
-      this.#attachment = null;
+      this.#attachment = undefined;
     }
   }
 
   destroy = () => {
     this.hide();
-    this.#reactRoot.unmount();
-    this.#reactRoot = null;
+    if (this.#reactRoot) {
+      this.#reactRoot.unmount();
+      this.#reactRoot = undefined;
+    }
     if (this.#root && this.#root.parentElement) {
       this.#root.parentElement.removeChild(this.#root);
-      this.#root = null;
+      this.#root = undefined;
     }
   }
 
