@@ -1,7 +1,5 @@
 import React from "react";
 
-import { WC } from "./WC.tsx";
-
 import { ReactComponent } from "../ReactComponent.tsx";
 import "./Home.css";
 
@@ -18,10 +16,8 @@ export const Home: ReactComponent = () => {
 
   return (
     <div>
-      <WC>
-        <p className="display">Congratulations! You just created your first React Plugin.</p>
-        <button onClick={duplicateMasterSpread}>Hello</button>
-      </WC>
+      <p className="display">Congratulations! You just created your first React Plugin.</p>
+      <button onClick={duplicateMasterSpread}>Hello</button>
     </div>
   );
 }
