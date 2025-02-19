@@ -16,25 +16,29 @@ module.exports = {
     os: 'commonjs2 os'
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx", ".ts", ".tsx"]
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        options: {
-          "presets": [
-            "@babel/preset-env",
-            "@babel/preset-typescript"
-          ],
-          plugins: [
-            "@babel/transform-react-jsx",
-            "@babel/plugin-syntax-class-properties",
-            "@babel/plugin-transform-object-rest-spread"
-          ]
-        }
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              "presets": [
+                "@babel/preset-env",
+                "@babel/preset-typescript"
+              ],
+              plugins: [
+                "@babel/transform-react-jsx",
+                "@babel/plugin-syntax-class-properties",
+                "@babel/plugin-transform-object-rest-spread"
+              ]
+            }
+          }
+        ]
       },
       {
         test: /\.png$/,
@@ -43,7 +47,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            }
+          },
+          {
+            loader: "postcss-loader"
+          }
+        ]
       }
     ]
   },
